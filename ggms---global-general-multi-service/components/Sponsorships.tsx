@@ -5,9 +5,9 @@ import GallerySlider from './GallerySlider';
 
 const Sponsorships: React.FC = () => {
   const partnershipImages = [
-    'https://images.unsplash.com/photo-1620315451944-77e49f694ca1?q=80&w=1200&auto=format&fit=crop', // Focus Moto Racing (CM Racing)
-    'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1200&auto=format&fit=crop', // Focus Basket in carrozzina (Amicacci)
-    'https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=1200&auto=format&fit=crop'  // Successo e Teamwork
+    '/Image/Gemini_Generated_Image_iw0y08iw0y08iw0y.png', // Focus Moto Racing (CM Racing)
+    '/Image/Gemini_Generated_Image_kdopxfkdopxfkdop.png', // Focus Moto Racing (CM Racing)
+    '/Image/moto_logo_ggms.png' // Focus Moto Racing (CM Racing)
   ];
 
   return (

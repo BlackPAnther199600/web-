@@ -1,4 +1,3 @@
-
 import { Service, ChatNode } from './types';
 
 export const SERVICES_DATA: Service[] = [
@@ -21,7 +20,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Trasformiamo la tua visibilità in conversioni reali.',
     longDescription: 'Dall\'analisi di mercato al posizionamento brand. Pianifichiamo campagne cross-media che colpiscono il target nel momento esatto del bisogno, massimizzando ogni centesimo investito.',
     images: [
-      'https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/ggms-marketing-logo.png', // Placeholder per logo Marketing
+      '/Image/ggms_logo_marketing.png', // Percorso corretto per logo Marketing
       'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=800&auto=format&fit=crop'
     ],
@@ -34,7 +33,6 @@ export const SERVICES_DATA: Service[] = [
     description: 'Gestione professionale di Instagram, Facebook e TikTok.',
     longDescription: 'La tua azienda merita una narrazione degna di nota. Curiamo ogni post, reel e story per costruire una community fedele e incrementare l\'authority del tuo brand sui canali digitali più caldi del momento.',
     images: [
-      'https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/ggms-social-logo.png', // Placeholder per logo Social
       'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?q=80&w=800&auto=format&fit=crop'
     ],
@@ -47,8 +45,6 @@ export const SERVICES_DATA: Service[] = [
     description: 'Protezione totale H24 con sistemi intelligenti.',
     longDescription: 'Siamo leader nella sicurezza integrata. Dalla vigilanza non armata ai sistemi di videosorveglianza con riconoscimento IA. Garantiamo la tranquillità dei tuoi spazi con personale qualificato e tecnologie d\'avanguardia.',
     images: [
-      'https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/ggms-vigilanza-logo.png', // Placeholder per logo Vigilanza
-      'https://images.unsplash.com/photo-1557597774-9d2739f85a94?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=800&auto=format&fit=crop'
     ],
     features: ['Vigilanza Non Armata', 'Portierato Pro', 'Videosorveglianza IA', 'Pronto Intervento']
@@ -60,8 +56,7 @@ export const SERVICES_DATA: Service[] = [
     description: 'Manutenzione e installazione presidi antincendio a norma di legge.',
     longDescription: 'La sicurezza antincendio è un obbligo e una responsabilità. GGMS offre un servizio completo di fornitura, installazione e manutenzione periodica di estintori, idranti e sistemi di rilevamento fumi.',
     images: [
-      'https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/ggms-antincendio-logo.png', // Placeholder per logo Antincendio
-      'https://images.unsplash.com/photo-1516104198126-f70966848142?q=80&w=800&auto=format&fit=crop'
+      '/Image/addetto-antincendio-union-consulting.jpg' // Placeholder per logo Antincendio
     ],
     features: ['Manutenzione Estintori', 'Piani di Evacuazione', 'Rilevamento Fumi', 'Certificazioni Normative']
   }

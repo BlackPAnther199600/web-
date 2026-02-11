@@ -50,10 +50,10 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ id, title, services, ac
   // Helper per ottenere l'URL del logo basato sull'ID del servizio (Simulazione dei file caricati)
   const getLogoForService = (serviceId: string) => {
     switch (serviceId) {
-      case 'marketing-adv': return 'https://i.ibb.co/XfXGXV9/ggms-marketing.png'; // Mock URL basato sull'immagine caricata
-      case 'social-mgmt': return 'https://i.ibb.co/mS6mH3Q/ggms-social.png';
-      case 'security-video': return 'https://i.ibb.co/YyY1q6K/ggms-vigilanza.png';
-      case 'security-fire': return 'https://i.ibb.co/r7C8d4N/ggms-antincendio.png';
+      case 'marketing-adv': return '/Image/ggms_logo_marketing.png'; // Mock URL basato sull'immagine caricata
+      case 'social-mgmt': return '/Image/ggms_logo_social2.png';
+      case 'security-video': return '/Image/logo_vigilanza2_colorato.png';
+      case 'security-fire': return '/Image/logo_anti_incendio.PNG';
       default: return null;
     }
   };
