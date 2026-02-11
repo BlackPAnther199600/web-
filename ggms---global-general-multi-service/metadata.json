@@ -1,0 +1,8 @@
+
+{
+  "name": "GGMS - Global General Multi Service",
+  "description": "Sviluppo App tramite IA, Marketing Strategico e Sicurezza Professionale a Giulianova. Innovazione e protezione per il tuo business.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
