@@ -2,13 +2,46 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'; // replace YOUR_FORM_ID with your Formspree form id
+
 const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [service, setService] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !name) {
+      alert('Per favore inserisci nome e email.');
+      return;
+    }
     setStatus('sending');
-    setTimeout(() => setStatus('success'), 1500);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, service, message })
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setService('');
+        setMessage('');
+      } else {
+        const text = await res.text();
+        console.error('Formspree error:', text);
+        alert('Si è verificato un errore durante l\'invio. Riprova più tardi.');
+        setStatus('idle');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Impossibile inviare il messaggio. Controlla la connessione.');
+      setStatus('idle');
+    }
   };
 
   return (
@@ -56,26 +89,26 @@ const ContactForm: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase text-slate-400 ml-1">Nome Completo</label>
-                  <input required type="text" className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all" placeholder="Esempio: Mario Rossi" />
+                  <input required type="text" className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all" placeholder="Esempio: Mario Rossi" value={name} onChange={e => setName(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase text-slate-400 ml-1">Email Aziendale</label>
-                  <input required type="email" className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all" placeholder="mario.rossi@azienda.it" />
+                  <input required type="email" className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all" placeholder="mario.rossi@azienda.it" value={email} onChange={e => setEmail(e.target.value)} />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-slate-400 ml-1">Servizio d'Interesse</label>
-                <select className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all appearance-none cursor-pointer">
-                  <option>Seleziona un'opzione...</option>
-                  <option>Marketing Pubblicitario</option>
-                  <option>Social Media Management</option>
-                  <option>Sicurezza & Vigilanza</option>
-                  <option>Altro / Richiesta Generica</option>
+                <select value={service} onChange={e => setService(e.target.value)} className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all appearance-none cursor-pointer">
+                  <option value="">Seleziona un'opzione...</option>
+                  <option value="Marketing Pubblicitario">Marketing Pubblicitario</option>
+                  <option value="Social Media Management">Social Media Management</option>
+                  <option value="Sicurezza & Vigilanza">Sicurezza & Vigilanza</option>
+                  <option value="Altro / Richiesta Generica">Altro / Richiesta Generica</option>
                 </select>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-slate-400 ml-1">Il Tuo Messaggio</label>
-                <textarea rows={4} className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all resize-none" placeholder="Raccontaci brevemente di cosa hai bisogno..."></textarea>
+                <textarea rows={4} className="w-full bg-slate-50 border-2 border-slate-100 focus:border-blue-500 focus:bg-white rounded-2xl p-4 outline-none transition-all resize-none" placeholder="Raccontaci brevemente di cosa hai bisogno..." value={message} onChange={e => setMessage(e.target.value)}></textarea>
               </div>
               <button 
                 disabled={status === 'sending'}
